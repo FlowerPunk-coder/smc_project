@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  smc_db:
+    image: mysql:8.0.30
+    container_name: smc_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'smc'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3315:3306'

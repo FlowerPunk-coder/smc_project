@@ -1,0 +1,96 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="Maxim Ketikov" id="Create-table-users_roles">
+        <preConditions>
+            <not>
+                <tableExists tableName="users_roles"/>
+            </not>
+        </preConditions>
+        <createTable tableName="users_roles">
+            <column name="users_id" type="BIGINT"/>
+            <column name="roles_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Maxim Ketikov" id="Create-table-role">
+        <preConditions>
+            <not>
+                <tableExists tableName="roles"/>
+            </not>
+        </preConditions>
+        <createTable tableName="roles">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="role" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Maxim Ketikov" id="Create-table-user">
+        <preConditions>
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+        <createTable tableName="users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Id is auto incremented -->
+    <changeSet author="Maxim Ketikov" id="Populate-table-roles-and-users">
+        <insert tableName="roles">
+            <column name="role" value="ROLE_ADMIN" />
+        </insert>
+        <insert tableName="roles">
+            <column name="role" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="users">
+            <column name="name" value="Максим"/>
+            <column name="last_name" value="Кетиков"/>
+            <column name="age" value="41"/>
+            <column name="email" value="maxim.ketikov@smc.ru"/>
+            <column name="password" value="$2a$10$Gq4Gjp73EBMFcm4Bq5G7i..XCUfMif5u69EvJKCaJlNVzvzZb2lVO"/>
+        </insert>
+        <insert tableName="users">
+            <column name="name" value="Андрей"/>
+            <column name="last_name" value="Валиков"/>
+            <column name="age" value="52"/>
+            <column name="email" value="andrey.valikov@smc.ru"/>
+            <column name="password" value="$2y$10$6ZRI8vhs0A19NXvUYroOkuFTbb/ghdt.jOU.9s4ZltWwP6.6Mk3dK"/>
+        </insert>
+    </changeSet>
+    <changeSet id="Populate-right" author="Maxim Ketikov">
+        <insert tableName="users_roles">
+            <column name="users_id" value="1"/>
+            <column name="roles_id" value="1"/>
+        </insert>
+        <insert tableName="users_roles">
+            <column name="users_id" value="1"/>
+            <column name="roles_id" value="2"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
