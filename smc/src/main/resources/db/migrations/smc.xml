@@ -112,16 +112,16 @@
             <column name="fire_cranes" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="basement" type="boolean" defaultValueBoolean="false">
+            <column name="basement" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="attic" type="boolean" defaultValueBoolean="false">
+            <column name="attic" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="first_level" type="boolean" defaultValueBoolean="false">
                 <constraints nullable="false"/>
             </column>
-            <column name="work" type="boolean" defaultValueBoolean="false">
+            <column name="work" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="house_details_id" type="bigint">
@@ -132,16 +132,50 @@
         <addUniqueConstraint tableName="entrances" columnNames="number_entrance, house_details_id"/>
     </changeSet>
     <changeSet id="Create-table-fire_box" author="Maxim Ketikov">
+        <preConditions>
+            <not>
+                <tableExists tableName="fire_boxes"/>
+            </not>
+        </preConditions>
         <createTable tableName="fire_boxes">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"
                              foreignKeyName="fk_entrance_firebox" references="entrances(id)"/>
             </column>
-            <column name="complete" type="boolean" defaultValueBoolean="false"/>
-            <column name="component" type="boolean" defaultValueBoolean="false"/>
-            <column name="fire_hose" type="boolean" defaultValueBoolean="false"/>
-            <column name="double_roll" type="boolean" defaultValueBoolean="false"/>
-            <column name="access" type="boolean" defaultValueBoolean="false"/>
+            <column name="complete" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+<!--            <column name="component" type="boolean" defaultValueBoolean="false"/>-->
+<!--            <column name="fire_hose" type="boolean" defaultValueBoolean="false"/>-->
+<!--            <column name="double_roll" type="boolean" defaultValueBoolean="false"/>-->
+<!--            <column name="access" type="boolean" defaultValueBoolean="false"/>-->
+        </createTable>
+    </changeSet>
+    <changeSet id="Create-table-tasks" author="Maxim Ketikov">
+        <preConditions>
+            <not>
+                <tableExists tableName="tasks"/>
+            </not>
+        </preConditions>
+        <createTable tableName="tasks">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="district_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="house_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="fk_user_task" references="users(id)"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

@@ -48,7 +48,10 @@
             <column name="last_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="age" type="INT">
+            <column name="position" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="email" type="VARCHAR(255)">
@@ -71,14 +74,16 @@
         <insert tableName="users">
             <column name="name" value="Максим"/>
             <column name="last_name" value="Кетиков"/>
-            <column name="age" value="41"/>
+            <column name="position" value="Ведущий специалист"/>
+            <column name="status" value="OK"/>
             <column name="email" value="maxim.ketikov@smc.ru"/>
             <column name="password" value="$2a$10$Gq4Gjp73EBMFcm4Bq5G7i..XCUfMif5u69EvJKCaJlNVzvzZb2lVO"/>
         </insert>
         <insert tableName="users">
             <column name="name" value="Андрей"/>
             <column name="last_name" value="Валиков"/>
-            <column name="age" value="52"/>
+            <column name="position" value="Специалист"/>
+            <column name="status" value="OK"/>
             <column name="email" value="andrey.valikov@smc.ru"/>
             <column name="password" value="$2y$10$6ZRI8vhs0A19NXvUYroOkuFTbb/ghdt.jOU.9s4ZltWwP6.6Mk3dK"/>
         </insert>
