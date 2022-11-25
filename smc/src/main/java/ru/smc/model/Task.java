@@ -24,12 +24,8 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    @Column(name = "district_id", nullable = false)
-    private long districtId;
-    @Column(name = "street_id", nullable = false)
-    private long streetId;
-    @Column(name = "house_id", nullable = false)
-    private long houseId;
+    @Column(nullable = false)
+    private String address;
     @Column
     private LocalDate date;
     @ManyToOne
