@@ -3,13 +3,12 @@ package ru.smc.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.smc.model.enums.SystemStatus;
+import ru.smc.model.enums.VPVStatus;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -27,7 +26,7 @@ public class FireBox {
     private long id;
     @Column
     @Enumerated(value = EnumType.STRING)
-    private SystemStatus complete;
+    private VPVStatus complete;
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")

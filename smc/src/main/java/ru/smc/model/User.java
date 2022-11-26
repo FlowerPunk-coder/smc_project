@@ -4,6 +4,7 @@ package ru.smc.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.smc.model.enums.Position;
 import ru.smc.model.enums.UserStatus;
 
 import javax.persistence.Column;
@@ -15,7 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
@@ -40,7 +40,7 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
     @Column(nullable = false)
-    private String position;
+    private Position position;
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private UserStatus status;

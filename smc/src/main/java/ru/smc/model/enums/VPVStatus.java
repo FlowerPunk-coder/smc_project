@@ -1,6 +1,6 @@
 package ru.smc.model.enums;
 
-public enum SystemStatus {
+public enum VPVStatus {
 
     OPEN("Открыта"),
     CLOSE("Закрыта"),
@@ -11,7 +11,7 @@ public enum SystemStatus {
 
     private final String title;
 
-    SystemStatus(String title) {
+    VPVStatus(String title) {
         this.title = title;
     }
 

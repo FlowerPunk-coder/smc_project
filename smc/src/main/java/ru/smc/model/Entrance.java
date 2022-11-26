@@ -1,10 +1,9 @@
 package ru.smc.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.smc.model.enums.SystemStatus;
+import ru.smc.model.enums.VPVStatus;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -43,13 +41,13 @@ public class Entrance {
     private int fireCranes;
     @Column
     @Enumerated(value = EnumType.STRING)
-    private SystemStatus attic;
+    private VPVStatus attic;
     @Column
     @Enumerated(value = EnumType.STRING)
-    private SystemStatus basement;
+    private VPVStatus basement;
     @Column
     @Enumerated(value = EnumType.STRING)
-    private SystemStatus work;
+    private VPVStatus work;
     @Column(name = "first_level")
     private boolean firstLevel;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -57,6 +55,4 @@ public class Entrance {
     private HouseDetails houseDetails;
     @OneToOne(mappedBy = "entrance", cascade = CascadeType.ALL)
     private FireBox fireBox;
-
-
 }

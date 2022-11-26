@@ -1,6 +1,9 @@
 package ru.smc.model;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import ru.smc.dto.HouseDto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,13 +16,15 @@ import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "houses")
 public class House {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long Id;
+    private long id;
     @Column(nullable = false)
     private int number;
     @Column(length = 10)

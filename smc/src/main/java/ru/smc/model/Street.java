@@ -26,7 +26,7 @@ public class Street {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long Id;
+    private long id;
     @Column
     private String name;
     @ManyToOne()
